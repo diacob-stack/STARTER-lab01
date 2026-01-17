@@ -1,6 +1,6 @@
 // intlist.cpp
 // Implements class IntList
-// YOUR NAME(S), AND DATE
+// Dan Iacob, 1/16/2026
 
 #include "intlist.h"
 
@@ -9,7 +9,6 @@ using std::cout;
 
 // copy constructor
 IntList::IntList(const IntList& source) {
-    //IMPLEMENT THIS
 }
 
 // destructor deletes all nodes
@@ -66,7 +65,8 @@ IntList& IntList::operator=(const IntList& source){
 
 // constructor sets up empty list
 IntList::IntList(){ 
-    //IMPLEMENT THIS 
+	head = nullptr;
+	tail = nullptr;
 }
 
 
