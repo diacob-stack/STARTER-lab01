@@ -37,11 +37,12 @@ bool IntList::contains(int value) const {
 // returns maximum value in list, or 0 if empty list
 int IntList::max() const {
 	Node* curr = head;
+	int maxVal = 0;
 	if(head){
-		int maxVal = head->info;
+		maxVal = head->info;
 		curr = head->next;
 	} else{
-		return 0;
+		return maxVal;
 	}
 	while(curr){
 		if(curr->info > maxVal){
