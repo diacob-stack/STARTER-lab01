@@ -36,7 +36,20 @@ bool IntList::contains(int value) const {
 
 // returns maximum value in list, or 0 if empty list
 int IntList::max() const {
-    return 0; // REPLACE THIS NON-SOLUTION
+	Node* curr = head;
+	if(head){
+		int maxVal = head->info;
+		curr = head->next;
+	} else{
+		return 0;
+	}
+	while(curr){
+		if(curr->info > maxVal){
+			maxVal = curr->info;
+		}
+		curr = curr->next;
+	}
+	return maxVal;
 }
 
 // returns average (arithmetic mean) of all values, or
