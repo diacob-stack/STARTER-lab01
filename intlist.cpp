@@ -78,7 +78,7 @@ double IntList::average() const {
 	if (count() == 0){
 		return 0;
 	}
-	return sum() / count();
+	return (double)sum() / count();
 }
 
 // inserts value as new node at beginning of list
