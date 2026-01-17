@@ -9,11 +9,24 @@ using std::cout;
 
 // copy constructor
 IntList::IntList(const IntList& source) {
+	head = nullptr;
+	tail = nullptr;
+	Node* curr = source.head;
+	while(curr){
+		push_back(curr->info);
+		curr = curr->next;
+	}
 }
 
 // destructor deletes all nodes
 IntList::~IntList() {
-    //IMPLEMENT THIS
+	Node* temp = head;
+	while(temp){
+		head = head->next;
+		delete temp;
+		temp = head;
+	}
+	tail = nullptr;
 }
 
 
@@ -21,7 +34,7 @@ IntList::~IntList() {
 int IntList::sum() const {
 	Node* curr = head;
 	int sum = 0;
-	while(curr){
+	while(curr) {
 		sum += curr->info;
 		curr = curr->next;
 	}
@@ -110,8 +123,42 @@ int IntList::count() const {
 //Assignment operator should copy the list from the source
 //to this list, deleting/replacing any existing nodes
 IntList& IntList::operator=(const IntList& source){
-    //IMPLEMENT
-    return *this;
+	if (this == &source){
+		return *this;
+	}
+
+	Node* curr1 = this->head;
+	Node* curr2 = source.head;
+	Node* prev1 = nullptr;
+
+	while(curr1 && curr2){
+		curr1->info = curr2->info;
+		prev1 = curr1;
+		curr1 = curr1->next;
+		curr2 = curr2->next;
+	}
+	if(curr1){
+		if(prev1){
+			prev1->next = nullptr;
+		} else{
+			head = nullptr;
+		}
+
+		while(curr1){
+			Node* temp = curr1->next;
+			delete curr1;
+			curr1 = temp;
+		}
+	}
+	while(curr2){
+		push_back(curr2->info);
+		curr2 = curr2->next;
+	}
+
+	if(head == nullptr){
+		tail = nullptr;
+	}
+	return *this;
 }
 
 // constructor sets up empty list
