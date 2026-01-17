@@ -19,7 +19,13 @@ IntList::~IntList() {
 
 // return sum of values in list
 int IntList::sum() const {
-    return 0; // REPLACE THIS NON-SOLUTION
+	Node* curr = head;
+	int sum = 0;
+	while(curr){
+		sum += curr->info;
+		curr = curr->next;
+	}
+	return sum;
 }
 
 // returns true if value is in the list; false if not
@@ -56,7 +62,10 @@ int IntList::max() const {
 // returns average (arithmetic mean) of all values, or
 // 0 if list is empty
 double IntList::average() const {
-    return 0.0; // REPLACE THIS NON-SOLUTION
+	if (count() == 0){
+		return 0;
+	}
+	return sum() / count();
 }
 
 // inserts value as new node at beginning of list
@@ -88,8 +97,13 @@ void IntList::push_back(int value) {
 
 // return count of values
 int IntList::count() const {
-   //IMPLEMENT THIS
-   return 0;
+	int count = 0;
+	Node* curr = head;
+	while(curr){
+		count++;
+		curr = curr->next;
+	}
+	return count;
 }
 
 
